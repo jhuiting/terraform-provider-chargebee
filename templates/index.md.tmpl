@@ -1,0 +1,45 @@
+---
+page_title: "{{ .ProviderShortName }} Provider"
+description: |-
+{{ .Description | plainmarkdown | trimspace | prefixlines "  " }}
+---
+
+# {{ .ProviderShortName }} Provider
+
+{{ .Description | trimspace }}
+
+## Example Usage
+
+{{ if .HasExample }}{{ tffile .ExampleFile }}{{ end }}
+
+Both attributes are optional and fall back to the `CHARGEBEE_SITE` and
+`CHARGEBEE_API_KEY` environment variables — convenient for a single site;
+for several sites use one aliased provider block per site (see the
+[Managing multiple sites](guides/multi-site) guide).
+
+## Stability
+
+This provider follows [semantic versioning](https://semver.org/):
+
+- Resource and data-source schemas are stable within a major version;
+  breaking changes only land in a new major version.
+- Deprecated attributes keep working for at least six months (and never less
+  than one minor release) before removal, and are announced in the changelog
+  under BACKWARDS INCOMPATIBILITIES.
+- State upgrades are shipped with any schema change that requires them.
+
+## Destroy semantics
+
+Chargebee refuses to delete catalog objects that are in use by subscriptions
+or invoices. On destroy this provider:
+
+1. Attempts a real delete.
+2. If Chargebee refuses, archives the object instead (items, item prices, and
+   features), emits a warning, and removes it from state. Archived ids stay
+   reserved in Chargebee.
+3. Item families cannot be archived: an in-use family is left in place with a
+   warning and removed from state.
+4. Item entitlements are revoked directly; there is no archived state for
+   them.
+
+{{ .SchemaMarkdown | trimspace }}

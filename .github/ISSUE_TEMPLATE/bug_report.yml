@@ -1,0 +1,37 @@
+name: Bug report
+description: Report a defect in the provider
+labels: [bug]
+body:
+  - type: input
+    id: provider-version
+    attributes:
+      label: Provider version
+      placeholder: "v1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: terraform-version
+    attributes:
+      label: Terraform version
+      placeholder: "1.9.x"
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Affected configuration
+      description: Minimal Terraform configuration that reproduces the issue. Redact ids you consider sensitive.
+      render: hcl
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected vs actual behavior
+      description: Include plan/apply output. NEVER include your API key or unredacted TF_LOG=debug output.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Security vulnerabilities: do **not** file an issue — see [SECURITY.md](../../SECURITY.md).

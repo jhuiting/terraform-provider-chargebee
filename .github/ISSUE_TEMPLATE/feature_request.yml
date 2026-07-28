@@ -1,0 +1,22 @@
+name: Feature request
+description: Request a new resource, data source, or attribute
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What are you trying to manage in Chargebee that you currently cannot?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed configuration
+      description: Sketch the HCL you would like to write.
+      render: hcl
+  - type: input
+    id: api-ref
+    attributes:
+      label: Chargebee API reference
+      placeholder: "https://apidocs.chargebee.com/docs/api/..."
