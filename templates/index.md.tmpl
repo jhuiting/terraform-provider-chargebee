@@ -17,6 +17,22 @@ Both attributes are optional and fall back to the `CHARGEBEE_SITE` and
 for several sites use one aliased provider block per site (see the
 [Managing multiple sites](guides/multi-site) guide).
 
+## Entitlements
+
+Entitlements gate what an item grants its subscribers, and are modelled by two
+resources that work together:
+
+- [`chargebee_feature`](resources/feature) defines a capability once at the site
+  level. Its `type` controls how the value is read: `switch` (boolean, the
+  default), `quantity` (a numeric allowance, pair with a `unit`), `range` (a
+  numeric value within a range), or `custom` (free-form). Features created by
+  this provider are activated automatically.
+- [`chargebee_item_entitlement`](resources/item_entitlement) grants one feature
+  to one item and sets the per-item `value`. Its `item_type` must match the
+  item's `type`. The upsert is idempotent — an entitlement already present in
+  Chargebee is adopted into state and reconciled to your configuration on the
+  first apply.
+
 ## Stability
 
 This provider follows [semantic versioning](https://semver.org/):
