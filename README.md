@@ -1,6 +1,11 @@
 # terraform-provider-chargebee
 
 [![Terraform Registry](https://img.shields.io/badge/Terraform%20Registry-jhuiting%2Fchargebee-844FBA?logo=terraform)](https://registry.terraform.io/providers/jhuiting/chargebee/latest)
+[![Release](https://img.shields.io/github/v/release/jhuiting/terraform-provider-chargebee?logo=github&sort=semver)](https://github.com/jhuiting/terraform-provider-chargebee/releases/latest)
+[![Test](https://github.com/jhuiting/terraform-provider-chargebee/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/jhuiting/terraform-provider-chargebee/actions/workflows/test.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jhuiting/terraform-provider-chargebee)](https://goreportcard.com/report/github.com/jhuiting/terraform-provider-chargebee)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/jhuiting/terraform-provider-chargebee?logo=go)](go.mod)
+[![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-blue.svg)](LICENSE)
 
 Terraform provider for the [Chargebee](https://www.chargebee.com/) Product
 Catalog 2.0 — manage product families, items (plans, add-ons, charges), item
